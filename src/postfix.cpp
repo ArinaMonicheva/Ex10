@@ -6,7 +6,8 @@
 #include "postfix.h"
 
 std::string infix2postfix(std::string infix) {
-  MyStack<char> forOperators(305);  // just for safety (max 100 '(' + all 200 max operators) + safe space
+  MyStack<char> forOperators(305);  // just for 
+  // safety (max 100 '(' + all 200 max operators) + safe space
   bool flag = false;
   std::string postfixRecord, temp;
   std::istringstream input(infix);
@@ -22,7 +23,7 @@ std::string infix2postfix(std::string infix) {
 
     if ( temp[0] > 47 && temp[0] < 58 ) {
       postfixRecord += temp + ' ';
-    } else if ( temp[0] == '+' || temp[0] == '-') {
+    } else if ( temp[0] == '+' || temp[0] == '-' ) {
       if ( forOperators.isEmpty() || forOperators.get() == '(' ) {
         forOperators.push(temp[0]);
       } else {
@@ -36,7 +37,8 @@ std::string infix2postfix(std::string infix) {
         if ( !(forOperators.get() == '*' || forOperators.get() == '/') ) {
           forOperators.push(temp[0]);
         } else {
-          while ( !forOperators.isEmpty() && (forOperators.get() == '/' || forOperators.get() == '*') ) {
+          while ( !forOperators.isEmpty() && 
+                (forOperators.get() == '/' || forOperators.get() == '*') ) {
             postfixRecord += forOperators.pop();
             postfixRecord += ' ';
           }
@@ -50,15 +52,15 @@ std::string infix2postfix(std::string infix) {
         postfixRecord += ' ';
       }
       forOperators.pop();
-	  flag = false;
+        flag = false;
     }
-    
   }
 
   while ( !forOperators.isEmpty() ) {
     postfixRecord += forOperators.pop();
     postfixRecord += ' ';
   }
+  temp.erase(temp.length() - 1, 1);
 
   return postfixRecord;
 }
