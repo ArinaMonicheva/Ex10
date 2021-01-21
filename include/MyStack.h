@@ -49,7 +49,7 @@ class MyStack {
   void push(S newElement) {
     if (lastIn < stackSize - 1) {
       stackArray[++lastIn] = newElement;
-	  return;
+      return;
     }
   }
 
@@ -60,7 +60,6 @@ class MyStack {
   bool isEmpty() const {
     return lastIn == -1;
   }
-
 };
 
-#endif // INCLUDE_MYSTACK_H_
+#endif  // INCLUDE_MYSTACK_H_
