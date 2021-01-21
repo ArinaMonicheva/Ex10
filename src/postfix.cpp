@@ -6,7 +6,7 @@
 #include "postfix.h"
 
 std::string infix2postfix(std::string infix) {
-  MyStack<char> forOperators(305);  // just for 
+  MyStack<char> forOperators(305);  // just for
   // safety (max 100 '(' + all 200 max operators) + safe space
   bool flag = false;
   std::string postfixRecord, temp;
@@ -37,7 +37,7 @@ std::string infix2postfix(std::string infix) {
         if ( !(forOperators.get() == '*' || forOperators.get() == '/') ) {
           forOperators.push(temp[0]);
         } else {
-          while ( !forOperators.isEmpty() && 
+          while ( !forOperators.isEmpty() &&
                 (forOperators.get() == '/' || forOperators.get() == '*') ) {
             postfixRecord += forOperators.pop();
             postfixRecord += ' ';
@@ -60,7 +60,7 @@ std::string infix2postfix(std::string infix) {
     postfixRecord += forOperators.pop();
     postfixRecord += ' ';
   }
-  temp.erase(temp.length() - 1, 1);
+  postfixRecord.erase(postfixRecord.length() - 1, 1);
 
   return postfixRecord;
 }
